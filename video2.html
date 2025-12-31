@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>One More Surprise 💖</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(135deg,#05010f,#120025,#3a005f);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  color:white;
+  overflow:hidden;
+}
+
+.bgAnim{
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  pointer-events:none;
+  z-index:-1;
+}
+
+.heart,.sparkle{
+  position:absolute;
+  opacity:.25;
+  animation:floatUp linear infinite;
+}
+
+.videoFrame{
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(255,0,200,.8);
+  text-align:center;
+}
+
+video{
+  width:85vw;
+  max-width:480px;
+  border-radius:18px;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(100vh) scale(.6);}
+  to{transform:translateY(-10vh) scale(1.2);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bgAnim" id="bgAnim"></div>
+
+<div class="videoFrame">
+  <h2>💝 One more memory for you 💝</h2>
+  <video id="v2" src="newyear1.mp4" autoplay controls onended="showFinal()"></video>
+<div id="finalMsg" style="display:none;font-size:32px;margin-top:25px;color:#ffb6ff;font-weight:bold;">
+  Once again,<br></br>
+    🎉 Happy New Year 🎉
+</div>
+
+</div>
+
+<script>
+setInterval(()=>{
+ const bg=document.getElementById("bgAnim");
+ const e=document.createElement("div");
+ e.className=Math.random()>.5?"heart":"sparkle";
+ e.innerText=Math.random()>.5?"💖":"✨";
+ e.style.left=Math.random()*100+"vw";
+ e.style.animationDuration=(Math.random()*5+6)+"s";
+ bg.appendChild(e);
+ setTimeout(()=>e.remove(),10000);
+},900);
+</script>
+<script>
+function showFinal(){
+  document.getElementById("v2").style.display="none";
+  document.getElementById("finalMsg").style.display="block";
+}
+</script>
+
+
+</body>
+</html>

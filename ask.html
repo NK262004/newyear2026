@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>One more surprise? 😏</title>
+<style>
+body{
+  margin:0;
+  background:linear-gradient(135deg,#120025,#3a005f,#05010f);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-family:'Segoe UI',sans-serif;
+  color:white;
+}
+.box{
+  background:rgba(255,255,255,0.08);
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 0 40px rgba(255,0,200,.7);
+}
+button{
+  margin:15px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,#ff0080,#ffb347);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>😏 Do you want another surprise?</h1>
+  <button onclick="goYes()">Yes 💖</button>
+  <button onclick="goNo()">No 😒</button>
+</div>
+
+<script>
+function goYes(){
+  window.location.href="video2.html";
+}
+function goNo(){
+  alert("Too bad 😈 You’re watching it anyway!");
+  window.location.href="video2.html";
+}
+</script>
+
+</body>
+</html>

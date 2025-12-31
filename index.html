@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#05010f,#120025);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+  text-align:center;
+}
+.page{display:none; animation:fade 1s;}
+.page.active{display:block;}
+button{
+  margin:15px;padding:12px 28px;border:none;border-radius:30px;
+  background:linear-gradient(45deg,#ff0080,#ffb347);
+  color:white;font-size:16px;cursor:pointer;
+}
+.polaroid{
+  background:white;padding:15px 15px 50px;border-radius:8px;
+  box-shadow:0 20px 40px rgba(255,255,255,0.2);
+  transform:rotate(-2deg);
+}
+.polaroid img{width:320px;border-radius:4px;}
+.caption{
+  margin-top:18px;font-size:18px;max-width:340px;
+  line-height:1.6;color:#ffd7f0;font-style:italic;
+}
+.fireworks{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:url("https://i.imgur.com/NM6xqkP.gif") center/cover;
+  display:none;justify-content:center;align-items:center;
+}
+.fireText{
+  background:rgba(0,0,0,.6);padding:40px;border-radius:20px;
+  font-size:28px;font-family:'papyrus',cursive;
+}
+.confetti{position:absolute;width:10px;height:10px;animation:fall 3s linear infinite;}
+
+.bgAnim{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;}
+.heart,.sparkle{position:absolute;opacity:.25;animation:floatUp linear infinite;}
+.heart{font-size:20px;}
+.sparkle{font-size:14px;}
+
+.catIntro{
+  position:relative;
+  animation:introMove 1.8s cubic-bezier(.2,.8,.2,1) forwards, jiggle 2s 2s infinite;
+}
+.catJiggle{animation:jiggle 2s infinite;}
+
+.highlightBorder{
+  border:4px solid #ff7bd5;
+  border-radius:20px;
+  padding:8px;
+  box-shadow:0 0 25px rgba(255,123,213,0.8);
+}
+.cornerCat{
+  position:absolute;
+  width:85px;
+  top:-35px;
+  right:-35px;
+}
+.polaroid{position:relative;}
+.polaroid img.mainPhoto{width:320px;border-radius:4px;}
+
+
+@keyframes introMove{
+  0%{transform:translate(-120vw,-120vh) rotate(-45deg) scale(.2);opacity:0;}
+  100%{transform:translate(0,0) rotate(0) scale(1);opacity:1;}
+}
+@keyframes jiggle{
+  0%,100%{transform:rotate(0);}
+  25%{transform:rotate(2deg);}
+  50%{transform:rotate(-2deg);}
+  75%{transform:rotate(1deg);}
+}
+@keyframes fall{
+  from{transform:translateY(-100px) rotate(0);}
+  to{transform:translateY(100vh) rotate(360deg);}
+}
+@keyframes floatUp{
+  from{transform:translateY(100vh) scale(.5);}
+  to{transform:translateY(-10vh) scale(1.2);}
+}
+@keyframes fade{from{opacity:0;transform:scale(.9);}to{opacity:1;}}
+.finalPic{
+  width:220px;
+  border:5px solid #ff7bd5;
+  border-radius:20px;
+  box-shadow:0 0 25px rgba(255,123,213,.8);
+  margin-top:25px;
+}
+.nextGift{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  text-align:center;
+  cursor:pointer;
+}
+.nextGift img{
+  width:120px;
+  transition:transform .3s;
+}
+.nextGift img:hover{
+  transform:scale(1.1) rotate(5deg);
+}
+.nextGift span{
+  display:block;
+  margin-top:6px;
+  font-size:14px;
+  color:#ffd7f0;
+}
+.annoyPic{
+  width:240px;
+  border:5px solid #ff7bd5;
+  border-radius:20px;
+  box-shadow:0 0 20px rgba(255,123,213,.8);
+  margin-top:20px;
+}
+.annoyText{
+  margin-top:15px;
+  font-size:16px;
+  color:#ffd7f0;
+  font-style:italic;
+}
+.annoyBG{
+  background:linear-gradient(135deg,#1a002d,#3a005f,#120025);
+  animation:bgPulse 6s infinite alternate;
+}
+
+@keyframes bgPulse{
+  0%{filter:brightness(1);}
+  100%{filter:brightness(1.3);}
+}
+
+.countdown{
+  font-size:32px;
+  margin-top:20px;
+  color:#ffb6ff;
+  font-weight:bold;
+}
+
+#videoPage video{
+  width:80%;
+  max-width:500px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(255,0,200,.8);
+}
+
+.videoBG{
+  background:linear-gradient(135deg,#05010f,#120025,#3a005f);
+}
+
+.videoFrame{
+  padding:18px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.08);
+  box-shadow:0 0 35px rgba(255,0,200,.7);
+  display:inline-block;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="bgAnim" id="bgAnim"></div>
+
+<div class="page active" id="p1">
+  <img src="1stpage.jpg" width="180" class="catIntro"><br><br>
+  <h1>Hey!! I made a website for you 💛</h1>
+  <p>Will you see it?</p>
+  <button onclick="show('p2yes')">Yes</button>
+  <button onclick="show('p2no')">No</button>
+</div>
+
+<div class="page" id="p2no">
+  <img src="2ndpage.png" width="220" class="catJiggle"><br><br>
+  <h1>HOW DARE YOU!!! 😤</h1>
+  <button onclick="show('p1')">BACK</button>
+</div>
+
+<div class="page" id="p2yes">
+  <!-- 3rd IMAGE WITH BORDER -->
+  <img src="3rdpage.jpg" width="200" class="catJiggle highlightBorder"><br><br>
+  <h1>BLEH!! 😜</h1>
+  <p>Click below for the surprise!!</p>
+  <button onclick="show('p3')">Next</button>
+</div>
+
+<div class="page" id="p3">
+  <h1>🎉 HAPPY NEW YEAR!!! LAMIIIII 🎉</h1>
+  <p>Click the gift letter 💌</p>
+  <img src="4thpage.png" width="160" class="catJiggle" onclick="show('mem')" style="cursor:pointer;">
+</div>
+
+<div class="page" id="mem">
+  <div class="polaroid">
+  <img src="all.png" class="cornerCat" style="width: 100px; height: auto;" alt="Description">
+  <img id="photo" class="mainPhoto" src="images/1.jpg">
+</div>
+
+  <div class="caption" id="cap">🌟 That quiet moment when two strangers unknowly started something beautiful.</div>
+  <button onclick="next()">Next Memory ➡</button>
+</div>
+
+<div class="fireworks" id="fw">
+  <div class="fireText">
+    🎆 HAPPY NEW YEAR 2026 🎆<br><br>
+    Thank you for being my best friend 🤍<br><br>
+
+    Thank you for coming into my life. You are actually making me smile and laugh.
+    Thank you for your understanding. Thank you for being my biggest supporter and
+     thank you for caring about me.<br><br>
+
+    This friendship is one of the most beautiful things I have in my life,
+    and I’m really grateful for you — today, tomorrow, and always. 💖<br><br>
+
+    <img src="final.jpg" class="finalPic">
+  </div>
+
+  <!-- Gift box link -->
+  <div class="nextGift" onclick="show('annoy')">
+    <img src="gift.png">
+    <span>Here’s another surprise for you 🎁</span>
+  </div>
+  
+</div>
+<div class="page annoyBG" id="annoy">
+  <h1>😈 Surprise Room 😈</h1>
+
+  <img src="annoy.jpg" class="annoyPic catJiggle">
+
+  <div class="annoyText">
+    Hehehehe 😝 I will again annoy and irritate you in 2026 and forever 💞  
+    <br><br>
+    Thank you for never getting tired of me, even when I’m at my worst 🤍
+  </div>
+
+  <div class="countdown" id="count">Video starts in 20...</div>
+</div>
+
+
+
+</div>
+
+
+
+<script>
+function show(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+
+setInterval(()=>{
+ const bg=document.getElementById("bgAnim");
+ const e=document.createElement("div");
+ e.className=Math.random()>.5?"heart":"sparkle";
+ e.innerText=Math.random()>.5?"💖":"✨";
+ e.style.left=Math.random()*100+"vw";
+ e.style.animationDuration=(Math.random()*5+6)+"s";
+ bg.appendChild(e);
+ setTimeout(()=>e.remove(),10000);
+},800);
+
+const caps=[
+"🌟 This was the first time we met and it was just two people turning a random game into the start of a beautiful friendship.",
+"🛺 Our first ride together — not planned, not perfect, went to eat a shittiest burger😂 but unforgettable.",
+"😊 Some smiles don’t need reasons. Yours was enough to change the mood.",
+"🏠 Somewhere between laughs, I stopped meeting a friend… I started feeling at home.",
+"📖 Maybe we never captured it properly, but some friendships are too special to be framed.",
+"🤍 No drama. No filters. Just two best friends being completely real.",
+"🏎️ You gifted me a hotwheels that day, It was so special moment for me. Thank youuuuu",
+"🌻 That sunflower wasn’t just a flower — it was a quiet thank-you for lighting up my life.",
+"🎂 It was your birthday, and I was so happy to be part of your special day, but I ruined your day by doing something stupid. I'm really sorry🙏 for that",
+"⚽️ This was the best day for me we played football together, you made me happy that day just by being there, I was very low for the past few days. Thank you for that amazing day!"
+];
+
+let i=0;
+function next(){
+ i++;
+ if(i<10){
+  document.getElementById("photo").src="images/"+(i+1)+".jpg";
+  document.getElementById("cap").innerText=caps[i];
+ }else{
+  document.getElementById("mem").style.display="none";
+  document.getElementById("fw").style.display="flex";
+  for(let j=0;j<80;j++){
+   let c=document.createElement("div");
+   c.className="confetti";
+   c.style.left=Math.random()*window.innerWidth+"px";
+   c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+   c.style.animationDuration=(Math.random()*3+2)+"s";
+   document.getElementById("fw").appendChild(c);
+  }
+ }
+}
+let timer;
+function startCountdown(){
+ let sec=20;
+ document.getElementById("count").innerText="Video starts in "+sec+"...";
+ timer=setInterval(()=>{
+   sec--;
+   document.getElementById("count").innerText="Video starts in "+sec+"...";
+   if(sec==0){
+  clearInterval(timer);
+  window.location.href = "video.html";
+}
+
+ },1000);
+}
+
+const oldShow = show;
+show = function(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ if(id==='annoy') startCountdown();
+};
+
+</script>
+</body>
+</html>

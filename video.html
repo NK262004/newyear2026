@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>New Year Memory</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#05010f,#120025,#3a005f);
+  color:white;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+  text-align:center;
+}
+
+.videoFrame{
+  padding:18px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.08);
+  box-shadow:0 0 40px rgba(255,0,200,.8);
+}
+
+video{
+  max-width:80vw;
+  max-height:80vh;
+  border-radius:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="videoFrame">
+  <h1>💖 A Little Memory for You 💖</h1>
+  <video id="nyVideo" src="newyear.mp4" controls onended="goAsk()"></video>
+  <script>
+    function goAsk(){
+      window.location.href = "ask.html";
+    }
+  </script>
+</div>
+
+</body>
+</html>
